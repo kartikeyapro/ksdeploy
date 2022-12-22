@@ -3,6 +3,7 @@
   become : yes
   vars :
     USERNAME : tom_user
+    DIR : /tom
 
   tasks :
     - name : Create User for Tomcat
@@ -11,8 +12,13 @@
 
     - name: Creates directory
       file:
-        path: /tom
+        path: "{{DIR}}"
         state: directory
         owner: "{{USERNAME}}"
         group: "{{USERNAME}}"
         mode: 0775
+
+    - name : download tomcat 
+      get_url :
+        url : https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.70.tar.gz
+        dest : "{{DIR}}"
