@@ -18,7 +18,11 @@
         group: "{{USERNAME}}"
         mode: 0775
 
-    - name : download tomcat 
-      get_url :
-        url : https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.70.tar.gz
-        dest : "{{DIR}}"
+    - name: Extract tom.tar into /tom
+      ansible.builtin.unarchive:
+        src: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.70.tar.gz
+        dest: "{{DIR}}"
+        remote_src : yes
+      become_user : "{{USERNAME}}"
+
+  
