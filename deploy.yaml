@@ -4,7 +4,7 @@
   vars :
     USERNAME : tom_user
     DIR : /tom
-    TOM_PATH : /tom/tomcat
+    TOM_PATH : /tom/apache-tomcat-9.0.70/webapps
 
   tasks :
     - name : Create User for Tomcat
@@ -30,6 +30,18 @@
       yum :
         name : java
         state : latest
+
+    - name: remove files and directories
+      file:
+        state: "{{item}}"
+        path: "{{TOM_PATH}}"
+        owner: "{{USERNAME}}"
+        group: "{{USERNAME}}"
+      with_items:
+        - absent
+        - directory
+
+
 
 
 
