@@ -25,4 +25,9 @@
         remote_src : yes
       become_user : "{{USERNAME}}"
 
+    - name : Install java on remote node
+      yum :
+        name : java
+        state : latest
+        
   
