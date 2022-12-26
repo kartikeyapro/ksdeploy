@@ -5,6 +5,8 @@
     USERNAME : tom_user
     DIR : /tom
     TOM_PATH : /tom/apache-tomcat-9.0.70/webapps
+    WAR_PACK : /tom/apache-tomcat-9.0.70/webapps/ks.war
+    WAR_URL : http://192.168.29.17:8081/repository/maven-snapshots/com/ksapp/ks/7-SNAPSHOT/ks-7-20221222.011259-5.war
 
   tasks :
     - name : Create User for Tomcat
@@ -40,6 +42,14 @@
       with_items:
         - absent
         - directory
+        
+    - name : deploy war 
+      get_url:
+        url : "{{WAR_URL}}"
+        dest : "{{WAR_PACK}}"
+        
+   
+        
 
 
 
