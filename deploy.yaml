@@ -45,7 +45,7 @@
         
     - name : deploy war 
       get_url:
-        url : "{{WAR_URL}}"
+        url : "{{warurl}}"
         dest : "{{WAR_PACK}}"
         
     - name : check tomcat running or not
