@@ -56,7 +56,7 @@
     
     - name : Starting Tomcat 
       shell : " nohup sh /tom/apache-tomcat-9.0.70/bin/startup.sh "
-      when : " out is failed
+      when : out is failed 
       
      
 
